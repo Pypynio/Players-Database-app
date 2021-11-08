@@ -7,15 +7,17 @@ public class Main {
         try {
             PropertiesLoader.readProperties();
             PlayerDAOimpl playerDAOimpl = new PlayerDAOimpl();
+            ObjectMapper objectMapper = new ObjectMapper();
 
-/*            ObjectMapper objectMapper = new ObjectMapper();
+/*
             Player playerFromJson = objectMapper.readValue(new File(PropertiesLoader.getUrlToJson()), Player.class);
-            playerDAOimpl.insertPlayer(playerFromJson);*/
+            playerDAOimpl.insertPlayer(playerFromJson);
 
-     //      Player player = playerDAOimpl.selectPlayerByNick("Bialas");
-           //player.SayMyName();
+           Player player = playerDAOimpl.selectPlayerByNick("Jaca");
+           player.SayMyName();*/
 
-           // playerDAOimpl.deletePlayer();
+           // playerDAOimpl.deletePlayerByNick("Bialas");
+          //  playerDAOimpl.deletePlayerById("114");
             playerDAOimpl.selectAllPlayers();
 
         } catch (Exception e) {

@@ -6,7 +6,8 @@ public interface PlayerDAO {
 
     void insertPlayer(Player player) throws SQLException, IOException;
 
-    void deletePlayer();
+    void deletePlayerByNick(String nick);
+
 
     Player selectPlayerByNick(String nick) throws SQLException;
 

@@ -1,6 +1,5 @@
 import java.io.IOException;
 import java.sql.*;
-import java.util.ArrayList;
 import java.util.List;
 
 public final class PlayerDAOimpl implements PlayerDAO {
@@ -27,18 +26,32 @@ public final class PlayerDAOimpl implements PlayerDAO {
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(query);
         List<Player> players = playerParser.createPlayersListFromResultSet(resultSet);
+        for (Player player: players) {
+            player.SayMyName();
+            System.out.println("~~~~~~");
+        }
         return players;
     }
 
     @Override
-    public void deletePlayer() {
+    public void deletePlayerByNick(String nick) {
         try {
             Statement statement = connection.createStatement();
-            statement.executeUpdate(QueryBuilder.getDeleteQuery("Pietrek Kogucik"));
+            statement.executeUpdate(QueryBuilder.getDeleteByNickQuery(nick));
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
+    }
+
+    public void deletePlayerById(String id){
+        try {
+            String query = QueryBuilder.getDeleteByIdQuery(id);
+            Statement statement = connection.createStatement();
+            statement.executeUpdate(query);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -46,6 +59,13 @@ public final class PlayerDAOimpl implements PlayerDAO {
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(QueryBuilder.getSelectByNick(nick));
         return playerParser.createPlayerFromResultSet(resultSet);
+    }
+
+    public void insertToTeams() throws SQLException {
+        PreparedStatement preparedStatement = connection.prepareStatement(QueryBuilder.insertToTeams());
+        preparedStatement.setString(1,"3");
+        preparedStatement.setString(2,"Noob");
+        preparedStatement.executeUpdate();
     }
 
     private void setupConnection() {
@@ -56,4 +76,5 @@ public final class PlayerDAOimpl implements PlayerDAO {
             e.printStackTrace();
         }
     }
+
 }
