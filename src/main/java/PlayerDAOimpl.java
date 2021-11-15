@@ -13,10 +13,12 @@ public final class PlayerDAOimpl implements PlayerDAO {
     }
 
     @Override
-    public void insertPlayer(Player playerToInsert) throws SQLException, IOException {
+    public void insertPlayer(Player playerToInsert) throws SQLException {
         PreparedStatement preparedStatement = connection.prepareStatement(QueryBuilder.getInsert());
         preparedStatement.setString(1, playerToInsert.getID());
         preparedStatement.setString(2, playerToInsert.getNick());
+        preparedStatement.setInt(3,playerToInsert.getLevel());
+        preparedStatement.setInt(4,playerToInsert.getTeamId());
         preparedStatement.executeUpdate();
     }
 
@@ -59,13 +61,6 @@ public final class PlayerDAOimpl implements PlayerDAO {
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(QueryBuilder.getSelectByNick(nick));
         return playerParser.createPlayerFromResultSet(resultSet);
-    }
-
-    public void insertToTeams() throws SQLException {
-        PreparedStatement preparedStatement = connection.prepareStatement(QueryBuilder.insertToTeams());
-        preparedStatement.setString(1,"3");
-        preparedStatement.setString(2,"Noob");
-        preparedStatement.executeUpdate();
     }
 
     private void setupConnection() {

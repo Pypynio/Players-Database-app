@@ -1,7 +1,7 @@
 public final class QueryBuilder {
 
     public static String getSelect() {
-        return "SELECT * FROM PLAYERS";
+        return "Select Id, nick,level, team_name from players JOIN teams ON teams.team_id=players.team_id";
     }
 
     public static String getDeleteByNickQuery(String nick) {
@@ -13,12 +13,14 @@ public final class QueryBuilder {
     }
 
     public static String getSelectByNick(String nick) {
-        return "SELECT * FROM PLAYERS WHERE Nick ="  + "'" +  nick + "'";
+       return  "Select Id, nick, level, team_name from players JOIN teams ON teams.team_id=players.team_id" +
+                "  WHERE Nick =" + "'" +  nick + "'";
     }
 
-    public static String insertToTeams(){return  "INSERT INTO teams (team_id,team_name) VALUES(?,?)";}
-
     public static String getInsert(){
-        return  "INSERT INTO players (Id,Nick) VALUES(?,?)";
+        return  "INSERT INTO players (Id,Nick,level,team_id) VALUES(?,?,?,?)";
+    }
+    public static String insertToTeams(){
+        return " INSERT INTO players_to_teams (player_id,team_id) VALUES(?,?)";
     }
 }
