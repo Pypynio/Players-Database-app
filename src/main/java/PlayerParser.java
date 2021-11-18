@@ -8,18 +8,18 @@ public class PlayerParser {
     public Player createPlayerFromResultSet(ResultSet resultSet) throws SQLException {
         String playerId = null;
         String playerNick = null;
-        String playerTeam = null;
-        Integer playerLevel = null;
+        Integer playerLevel= null;
         Integer teamId = null;
+        String teamName = null;
 
         while (resultSet.next()) {
             playerId = resultSet.getString("Id");
             playerNick = resultSet.getString("Nick");
-            playerTeam = resultSet.getString("team_name");
             playerLevel = resultSet.getInt("level");
-            //teamId = resultSet.getInt("team_id");
+            teamId = resultSet.getInt("team_id");
+            teamName = resultSet.getString("team_name");
         }
-        return new Player(playerId, playerNick,playerTeam, playerLevel);
+        return new Player(playerId,playerNick,playerLevel,teamId,teamName);
     }
 
     public List<Player> createPlayersListFromResultSet(ResultSet resultSet) throws SQLException {
@@ -27,10 +27,10 @@ public class PlayerParser {
         while (resultSet.next()) {
             String id = resultSet.getString("id");
             String nick = resultSet.getString("nick");
-            String team = resultSet.getString("team_name");
             int level = resultSet.getInt("level");
-           // int teamId = resultSet.getInt("team_id");
-            Player player = new Player(id,nick,team,level);
+            int teamId = resultSet.getInt("team_id");
+            String team = resultSet.getString("team_name");
+            Player player = new Player(id,nick,level,teamId,team);
             players.add(player);
         }
         return players;

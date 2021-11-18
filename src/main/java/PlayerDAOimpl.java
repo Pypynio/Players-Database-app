@@ -35,6 +35,27 @@ public final class PlayerDAOimpl implements PlayerDAO {
         return players;
     }
 
+    public void countPlayers() throws SQLException {
+        int count = 0;
+        String countQuery = QueryBuilder.countPlayers();
+        Statement statement = connection.createStatement();
+        ResultSet resultSet = statement.executeQuery(countQuery);
+        while (resultSet.next()){
+            count=resultSet.getInt(1);
+        }
+        System.out.println("ILOSC MIRKOW : " + count);
+    }
+
+    public void countSomething( String countQuery) throws SQLException{
+        int count = 0;
+        Statement statement = connection.createStatement();
+        ResultSet resultSet = statement.executeQuery(countQuery);
+        while (resultSet.next()){
+            count=resultSet.getInt(1);
+        }
+        System.out.println("Antyhing counted: " + count) ;
+    }
+
     @Override
     public void deletePlayerByNick(String nick) {
         try {
