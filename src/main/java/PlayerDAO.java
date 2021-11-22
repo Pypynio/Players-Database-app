@@ -1,3 +1,6 @@
+package DAO;
+
+import DAO.DataAccessObject;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.File;
@@ -7,14 +10,14 @@ import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
-public final class PlayerDAOimpl implements DataAccessObject {
+public class PlayerDAO implements DataAccessObject {
 
     private PlayerParser playerParser;
     private Connection connection;
     ObjectMapper objectMapper = new ObjectMapper();
     Scanner scanner = new Scanner(System.in);
 
-    public PlayerDAOimpl() throws IOException {
+    public PlayerDAO() throws IOException {
         setupConnection();
         this.playerParser = new PlayerParser();
     }
