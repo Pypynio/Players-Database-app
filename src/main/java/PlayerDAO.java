@@ -4,13 +4,14 @@ import java.util.List;
 
 public interface PlayerDAO {
 
-    void insertPlayer(Player player) throws SQLException, IOException;
-
-    void deletePlayerByNick(String nick);
 
 
-    Player selectPlayerByNick(String nick) throws SQLException;
+
+    void insertPlayer() throws SQLException, IOException;
 
     List<Player> selectAllPlayers() throws SQLException;
 
+    void deletePlayerByNick();
+
+    Player selectPlayerByNick() throws SQLException;
 }
