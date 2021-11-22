@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
-public final class PlayerDAOimpl implements PlayerDAO {
+public final class PlayerDAOimpl implements DataAccessObject {
 
     private PlayerParser playerParser;
     private Connection connection;
@@ -30,7 +30,7 @@ public final class PlayerDAOimpl implements PlayerDAO {
     }
 
     @Override
-    public void insertPlayer() throws SQLException, IOException {
+    public void insert() throws SQLException, IOException {
         Player playerFromFirstJson = objectMapper.readValue(new File(PropertiesLoader.getUrlToJson()), Player.class);
         PreparedStatement preparedStatement = connection.prepareStatement(QueryBuilder.getInsert());
         preparedStatement.setInt(1, findNewID());

@@ -30,7 +30,7 @@ public class Main {
                 int userChoice = scanner.nextInt();
                 switch (userChoice) {
                     case 1 -> playerDAOimpl.selectAllPlayers();
-                    case 2 -> playerDAOimpl.insertPlayer();
+                    case 2 -> playerDAOimpl.insert();
                     case 3 -> playerDAOimpl.secondPlayerInsert();
                     case 4 -> playerDAOimpl.selectPlayerByNick();
                     case 5 -> playerDAOimpl.genericSelect();
