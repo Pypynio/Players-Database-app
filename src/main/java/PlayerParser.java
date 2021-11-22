@@ -17,9 +17,9 @@ public class PlayerParser {
             playerNick = resultSet.getString("Nick");
             playerLevel = resultSet.getInt("level");
             teamId = resultSet.getInt("team_id");
-            teamName = resultSet.getString("team_name");
+           // teamName = resultSet.getString("team_name");
         }
-        return new Player(playerId,playerNick,playerLevel,teamId,teamName);
+        return new Player(playerId,playerNick,playerLevel,teamId);
     }
 
     public List<Player> createPlayersListFromResultSet(ResultSet resultSet) throws SQLException {
@@ -29,8 +29,8 @@ public class PlayerParser {
             String nick = resultSet.getString("nick");
             int level = resultSet.getInt("level");
             int teamId = resultSet.getInt("team_id");
-            String team = resultSet.getString("team_name");
-            Player player = new Player(id,nick,level,teamId,team);
+           // String team = resultSet.getString("team_name");
+            Player player = new Player(id,nick,level,teamId);
             players.add(player);
         }
         return players;

@@ -1,2 +1,2 @@
-package PACKAGE_NAME;public class Entity {
+public abstract class Entity {
 }

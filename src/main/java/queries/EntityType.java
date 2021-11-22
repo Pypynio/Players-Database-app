@@ -1,2 +1,6 @@
-package queries;public enum EntityType {
+package queries;
+
+public enum EntityType {
+    PLAYERS,
+    TEAMS
 }

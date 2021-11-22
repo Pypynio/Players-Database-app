@@ -1,4 +1,4 @@
-
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -6,13 +6,17 @@ public class Main {
 
         try {
             PropertiesLoader.readProperties();
-            PlayerDAOimpl playerDAOimpl = new PlayerDAOimpl();
+            PlayerDAO playerDAOimpl = new PlayerDAO();
+            List<Player> players = playerDAOimpl.selectAll();
+            Player player = playerDAOimpl.selectById("2");
+
 /*            System.out.println("~~~~~~~~~");
             playerDAOimpl.selectAllPlayers();
             playerDAOimpl.countPlayers();
-            playerDAOimpl.countTeamMembers(QueryBuilder.displayNumberOfMembers("2"));
+            playerDAOimpl.countTeamMembers(queries.queries.QueryBuilder.displayNumberOfMembers("2"));
             playerDAOimpl.genericSelect("players", "3");*/
-            Scanner scanner = new Scanner(System.in);
+
+/*            Scanner scanner = new Scanner(System.in);
             boolean shouldContinue = true;
             while (shouldContinue) {
                 System.out.println("Wybierz opcję: ");
@@ -29,7 +33,7 @@ public class Main {
 
                 int userChoice = scanner.nextInt();
                 switch (userChoice) {
-                    case 1 -> playerDAOimpl.selectAllPlayers();
+*//*                    case 1 -> playerDAOimpl.selectAllPlayers();
                     case 2 -> playerDAOimpl.insert();
                     case 3 -> playerDAOimpl.secondPlayerInsert();
                     case 4 -> playerDAOimpl.selectPlayerByNick();
@@ -38,12 +42,13 @@ public class Main {
                     case 7 -> playerDAOimpl.deletePlayerByNick();
                     case 8 -> playerDAOimpl.countPlayers();
                     case 9 -> playerDAOimpl.countTeamMembers();
-                   case 10 -> shouldContinue = false;
+                   case 10 -> shouldContinue = false;*//*
+
                     default -> {
                         throw new IllegalStateException("Podaj cyfrę od 1 do 10 ");
                     }
                 }
-            }
+            }*/
         } catch (Exception e) {
             e.printStackTrace();
         }

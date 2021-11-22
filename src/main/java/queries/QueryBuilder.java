@@ -1,4 +1,18 @@
+package queries;
+
 public final class QueryBuilder {
+
+    String selectQuery = "SELECT * FROM ";
+    public String buildSelectAllQuery(EntityType entityType){
+        return selectQuery + entityType;
+    }
+
+    String SelectByIdQuery = "SELECT * FROM ";
+
+    public String buildSelectByIdQuery(EntityType entityType, String id){
+        return SelectByIdQuery + entityType + " WHERE id = "+id;
+    }
+
 
     public static String getSelect() {
         return "Select Id, nick,level, players.team_id, team_name from players left JOIN teams ON players.team_id = teams.team_id";
