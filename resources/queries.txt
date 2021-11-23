@@ -1,10 +1,11 @@
 PLAYERS
 
+
 CREATE TABLE PLAYERS (
-    Id      INTEGER NOT NULL,
+    Id      INTEGER PRIMARY KEY AUTOINCREMENT,
     Nick    TEXT NOT NULL,
     level   INTEGER NOT NULL,
-    team_id INTEGER NOT NULL
+    team_id INTEGER
 );
 
 INSERT INTO players (Id, Nick, level, team_id) VALUES ('1', 'Marek', '8','2'),('2', 'Maciej', '11','1'),
@@ -17,8 +18,10 @@ Select count(*) from players
 ~~~~~~~~~
 
 CREATE TABLE TEAMS (
-    team_id   INT PRIMARY KEY NOT NULL UNIQUE,
-    team_name NOT NULL
+    id       INT PRIMARY KEY
+                 NOT NULL
+                 UNIQUE,
+    teamName     NOT NULL
 );
 
 INSERT INTO teams (team_id, team_name ) VALUES ('1', 'Knight'), ('2','Druid') ('3','Noob');

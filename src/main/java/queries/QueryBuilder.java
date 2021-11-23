@@ -7,11 +7,37 @@ public final class QueryBuilder {
         return selectQuery + entityType;
     }
 
-    String SelectByIdQuery = "SELECT * FROM ";
-
     public String buildSelectByIdQuery(EntityType entityType, String id){
-        return SelectByIdQuery + entityType + " WHERE id = "+id;
+        return selectQuery + entityType + " WHERE id = "+id;
     }
+
+    String insertQuery = "INSERT INTO ";
+    String playerValues = "(Id,Nick,level,team_id) VALUES(?,?,?,?)";
+    String teamValues = "(id,teamName) VALUES(?,?)";
+
+    public String buildInsertPlayerQuery(EntityType entityType){
+        return insertQuery + entityType + playerValues;
+    }
+
+    public String buildInsertTeamQuery(EntityType entityType){
+        return insertQuery + entityType + teamValues;
+    }
+
+
+    String deleteQuery = "DELETE FROM ";
+    String deleteById = " WHERE id = ";
+
+    public String buildDeleteQuery(EntityType entityType, String id){
+        return deleteQuery + entityType + deleteById + id;
+    }
+
+    String updateQuery = "UPDATE ";
+
+    public String buildUpdateQuery(EntityType entityType, String field, String newValue, String idValue){
+        return updateQuery + entityType + " SET " + field + " = " + "'" + newValue+ "'" + " WHERE id = " + idValue ;
+    }
+
+
 
 
     public static String getSelect() {
@@ -43,8 +69,11 @@ public final class QueryBuilder {
         return "SELECT COUNT(*) FROM players where players.team_id = " + teamId;
     }
 
-    public static String maxID() {
-        return "Select max(id) from players";
+
+    public static String maxID() { return "Select max(id) from "; }
+
+    public static String GenericMaxId(EntityType entityType){
+        return maxID()+entityType;
     }
 
     public static String getTeamById(String table, String id) {
