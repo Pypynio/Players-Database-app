@@ -7,28 +7,29 @@ import static org.junit.jupiter.api.Assertions.*;
 class QueryBuilderTest {
     QueryBuilder queryBuilder = new QueryBuilder();
 
-    @Test
+/*    @Test
     void buildSelectAllQuery() {
         String expected = "SELECT * FROM "+ EntityType.PLAYERS;
         String actual = queryBuilder.buildSelectAllQuery(EntityType.PLAYERS);
         assertEquals(expected, actual);
-    }
-
-/*    @Test
-    void buildSelectByIdQuery() {
-        String expected = "SELECT * FROM PLAYERS WHERE id = id";
-        String actual = queryBuilder.buildSelectByIdQuery(EntityType.PLAYERS,"id");
-        assertEquals(expected, actual);
     }*/
 
-/*
+/*    @Test
+    void buildGenericInsertQuery() {
+        String playersExpected = "INSERT INTO PLAYERS(Id,Nick,level,team_id) VALUES(?,?,?,?)";
+        String playersActual = queryBuilder.buildGenericInsertQuery(EntityType.PLAYERS);
+        assertEquals(playersExpected, playersActual);
+        String teamsExpected = "INSERT INTO TEAMS(id,teamName) VALUES(?,?)";
+        String teamsActual = queryBuilder.buildGenericInsertQuery(EntityType.TEAMS);
+        assertEquals(teamsExpected, teamsActual);
+    }*/
+
     @Test
-    void buildInsertPlayerQuery() {
-        String expected = "INSERT INTO PLAYERS(Id,Nick,level,team_id) VALUES(?,?,?,?)";
-        String actual = queryBuilder.buildInsertPlayerQuery(EntityType.PLAYERS);
-        assertEquals(expected,actual);
+    void buildSelectByIdQuery() {
+        String expected = "SELECT * FROM " + EntityType.PLAYERS + " WHERE id = id";
+        String actual = queryBuilder.buildSelectByIdQuery(EntityType.PLAYERS,"id");
+        assertEquals(expected, actual);
     }
-*/
 
 /*    @Test
     void buildDeleteQuery() {
@@ -45,10 +46,4 @@ class QueryBuilderTest {
         assertEquals(expected,actual);
     }*/
 
-/*    @Test
-    void buildInsertTeamQuery() {
-        String expected = "INSERT INTO TEAMS(id,teamName) VALUES(?,?)";
-        String actual = queryBuilder.buildInsertTeamQuery(EntityType.TEAMS);
-        assertEquals(expected, actual);
-    }*/
 }

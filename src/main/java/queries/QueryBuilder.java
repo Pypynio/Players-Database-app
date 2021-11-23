@@ -15,12 +15,11 @@ public final class QueryBuilder {
     String playerValues = "(Id,Nick,level,team_id) VALUES(?,?,?,?)";
     String teamValues = "(id,teamName) VALUES(?,?)";
 
-    public String buildInsertPlayerQuery(EntityType entityType){
-        return insertQuery + entityType + playerValues;
-    }
-
-    public String buildInsertTeamQuery(EntityType entityType){
-        return insertQuery + entityType + teamValues;
+    public String buildGenericInsertQuery(EntityType entityType){
+        if (entityType.equals(EntityType.PLAYERS)){
+            return insertQuery+entityType+playerValues;
+        }
+         else return  insertQuery +entityType+teamValues;
     }
 
 

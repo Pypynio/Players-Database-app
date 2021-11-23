@@ -19,7 +19,7 @@ public class TeamDAO implements DataAccessObject<Team> {
     public void insert(Team genericObject) {
         try {
             Team team = objectMapper.readValue(new File(PropertiesLoader.getSecondJson()),Team.class);
-            PreparedStatement preparedStatement = connection.prepareStatement(queryBuilder.buildInsertTeamQuery(EntityType.TEAMS));
+            PreparedStatement preparedStatement = connection.prepareStatement(queryBuilder.buildGenericInsertQuery(EntityType.TEAMS));
             preparedStatement.setInt(1,findNewID());
             preparedStatement.setString(2,team.getTeamName());
             preparedStatement.executeUpdate();

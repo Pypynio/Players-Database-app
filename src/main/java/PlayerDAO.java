@@ -49,7 +49,8 @@ public class PlayerDAO implements DataAccessObject<Player> {
     public void insert(Player genericObject) {
         try {
             Player player = objectMapper.readValue(new File(PropertiesLoader.getUrlToJson()), Player.class);
-            PreparedStatement preparedStatement = connection.prepareStatement(queryBuilder.buildInsertPlayerQuery(EntityType.PLAYERS));
+            PreparedStatement preparedStatement = connection.prepareStatement(queryBuilder.buildGenericInsertQuery(EntityType.PLAYERS));
+           // PreparedStatement preparedStatement = connection.prepareStatement(queryBuilder.buildInsertPlayerQuery(EntityType.PLAYERS));
             preparedStatement.setInt(1, findNewID());
             preparedStatement.setString(2, player.getNick());
             preparedStatement.setInt(3, player.getLevel());
