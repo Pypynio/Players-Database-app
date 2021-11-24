@@ -1,3 +1,6 @@
-\.gradle
-\.idea
-PLAYERSDB.db
+/.gradle/
+/.idea/
+*PLAYERSDB.db
+/build/
+*build.gradle
+*gradlew
