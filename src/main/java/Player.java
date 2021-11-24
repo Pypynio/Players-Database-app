@@ -5,12 +5,13 @@ public class Player extends Entity {
     private int teamId;
     private String team=null;
 
-    public Player(String ID, String nick, int level, int teamId, String team) {
+    public Player(String ID, String nick, int level, int teamId) {
         this.id = ID;
-        Nick = nick;
+        this.Nick = nick;
         this.level = level;
         this.teamId = teamId;
-        this.team = team;
+    }
+    public Player() {
     }
 
     public String getTeam() {return team;}
@@ -41,24 +42,5 @@ public class Player extends Entity {
         System.out.println("TEAMNAME :" + getTeam());
     }
 
-    public Player(String ID, String nick) {
-        this.id = ID;
-        Nick = nick;
-    }
 
-    public Player(String ID, String nick, int level) {
-        this.id = ID;
-        Nick = nick;
-        this.level = level;
-    }
-
-    public Player(String ID, String nick, int level, int teamId) {
-        this.id = ID;
-        this.Nick = nick;
-        this.level = level;
-        this.teamId = teamId;
-    }
-
-    public Player() {
-    }
 }

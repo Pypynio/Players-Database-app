@@ -7,14 +7,14 @@ import static org.junit.jupiter.api.Assertions.*;
 class QueryBuilderTest {
     QueryBuilder queryBuilder = new QueryBuilder();
 
-/*    @Test
+    @Test
     void buildSelectAllQuery() {
         String expected = "SELECT * FROM "+ EntityType.PLAYERS;
         String actual = queryBuilder.buildSelectAllQuery(EntityType.PLAYERS);
         assertEquals(expected, actual);
-    }*/
+    }
 
-/*    @Test
+    @Test
     void buildGenericInsertQuery() {
         String playersExpected = "INSERT INTO PLAYERS(Id,Nick,level,team_id) VALUES(?,?,?,?)";
         String playersActual = queryBuilder.buildGenericInsertQuery(EntityType.PLAYERS);
@@ -22,7 +22,7 @@ class QueryBuilderTest {
         String teamsExpected = "INSERT INTO TEAMS(id,teamName) VALUES(?,?)";
         String teamsActual = queryBuilder.buildGenericInsertQuery(EntityType.TEAMS);
         assertEquals(teamsExpected, teamsActual);
-    }*/
+    }
 
     @Test
     void buildSelectByIdQuery() {
@@ -31,19 +31,19 @@ class QueryBuilderTest {
         assertEquals(expected, actual);
     }
 
-/*    @Test
+    @Test
     void buildDeleteQuery() {
         String expected = "DELETE FROM TEAMS WHERE id = 3";
         String actual = queryBuilder.buildDeleteQuery(EntityType.TEAMS,"3");
         assertEquals(expected,actual);
-    }*/
+    }
 
 
-/*    @Test
+    @Test
     void buildUpgradeQuery() {
         String expected = "UPDATE PLAYERS SET id = '112' WHERE id = 4";
         String actual = queryBuilder.buildUpdateQuery(EntityType.PLAYERS,"id","112","4");
         assertEquals(expected,actual);
-    }*/
+    }
 
 }

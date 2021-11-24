@@ -1,20 +1,11 @@
-import queries.EntityType;
 
-import java.util.List;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-/*        PropertiesLoader.readProperties();
-        PlayerDAO playerDAOimpl = new PlayerDAO();
-        TeamDAO teamDAO = new TeamDAO();
-        Player player = new Player();
-        Team team = new Team();
-        Scanner scanner = new Scanner(System.in);*/
         displayMenu();
 
     }
-
     public static void displayMenu() throws Exception {
         PropertiesLoader.readProperties();
         PlayerDAO playerDAOimpl = new PlayerDAO();
@@ -38,19 +29,15 @@ public class Main {
             System.out.println("11. ADIOS");
             int userChoice = scanner.nextInt();
             switch (userChoice) {
-                case 1 -> {
-                    List<Player> players = playerDAOimpl.selectAll();
-                }
+                case 1 -> playerDAOimpl.selectAll();
                 case 2 -> player = playerDAOimpl.selectById("2");
                 case 3 -> playerDAOimpl.insert(player);
                 case 4 -> playerDAOimpl.update(player, "level", "77", "6");
                 case 5 -> playerDAOimpl.delete(player, "6");
-                case 6 -> {
-                    List<Team> teams = teamDAO.selectAll();
-                }
+                case 6 -> teamDAO.selectAll();
                 case 7 -> teamDAO.selectById("1");
                 case 8 -> teamDAO.insert(team);
-                case 9 -> teamDAO.update(team, "teamName", "Knight", "1");
+                case 9 -> teamDAO.update(team, "teamName", "taxiDriver", "4");
                 case 10 -> teamDAO.delete(team, "4");
                 case 11 -> {
                     shouldContinue = false;

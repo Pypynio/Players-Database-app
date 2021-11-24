@@ -10,14 +10,12 @@ public class PlayerParser {
         String playerNick = null;
         Integer playerLevel= null;
         Integer teamId = null;
-        String teamName = null;
 
         while (resultSet.next()) {
             playerId = resultSet.getString("Id");
             playerNick = resultSet.getString("Nick");
             playerLevel = resultSet.getInt("level");
             teamId = resultSet.getInt("team_id");
-           // teamName = resultSet.getString("team_name");
         }
         return new Player(playerId,playerNick,playerLevel,teamId);
     }
@@ -29,7 +27,6 @@ public class PlayerParser {
             String nick = resultSet.getString("nick");
             int level = resultSet.getInt("level");
             int teamId = resultSet.getInt("team_id");
-           // String team = resultSet.getString("team_name");
             Player player = new Player(id,nick,level,teamId);
             players.add(player);
         }
